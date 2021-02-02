@@ -4,28 +4,27 @@ const app = () =>   {
     const outline = document.querySelector('.moving-outline circle');
     const video = document.querySelector('.vid-container video');
 
-    // Sounds
-    const sounds = document.querySelectorAll('.sound-picker button');
     // Time Display
     const timeDisplay = document.querySelector('.time-display');
     const timeSelect = document.querySelectorAll('.time-select button');
-    // get length of circle outline
-    const outlineLength = outline.getTotalLength();
+    
     // Duration
     let fakeDuration = 600;
 
-        outline.style.strokeDasharray = outlineLength;
-        outline.style.strokeDashoffset = outlineLength;
+    // get length of circle outline
+    const outlineLength = outline.getTotalLength();
+    outline.style.strokeDasharray = outlineLength;
+    outline.style.strokeDashoffset = outlineLength;
 
 // pick sounds
-
+    const sounds = document.querySelectorAll('.sound-picker button');
     sounds.forEach(sound => {
         sound.addEventListener('click', function()  {
             song.src = this.getAttribute('data-sound');
             video.src = this.getAttribute('data-video');
             checkPlaying(song);
-        })
-    })
+        });
+    });
 
 // play sound
     play.addEventListener('click', () => {
@@ -38,8 +37,8 @@ const app = () =>   {
         option.addEventListener('click', function(){
             fakeDuration = this.getAttribute('data-time');
             timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(fakeDuration % 60)}`
-        })
-    })
+        });
+    });
 
 
 
@@ -79,3 +78,16 @@ const app = () =>   {
 };
 
 app();
+
+
+
+
+// PROJECT PLAN:
+
+// 0. Find higher quality videos.
+
+// 1. Add jungle sounds & video.
+
+// 2. Fix video transition on loop.
+
+// 3. Refactor (consider splitting js up into functions).
